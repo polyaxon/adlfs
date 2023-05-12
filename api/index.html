@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="prev" title="adlfs" href="../" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
+    <!-- Generated with Sphinx 6.2.1 and Furo 2023.03.27 -->
         <title>API Reference - adlfs documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
@@ -572,6 +572,7 @@ Tries credentials first, then connection string and finally account key</p>
 <span class="sig-name descname"><span class="pre">expand_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_noexist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.expand_path" title="Permalink to this definition">#</a></dt>
 <dd><p>Turn one or more globs or directories into a list of all matching paths
 to files or directories.</p>
+<p>kwargs are passed to <code class="docutils literal notranslate"><span class="pre">glob</span></code> or <code class="docutils literal notranslate"><span class="pre">find</span></code>, which may in turn call <code class="docutils literal notranslate"><span class="pre">ls</span></code></p>
 </dd></dl>
 
 <dl class="py method">
