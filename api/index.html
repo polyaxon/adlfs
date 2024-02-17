@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex/" /><link rel="search" title="Search" href="../search/" /><link rel="prev" title="adlfs" href="../" />
 
-    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
         <title>API Reference - adlfs documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -464,8 +464,8 @@ for a response from the server while uploading or downloading a blob.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#adlfs.AzureBlobFileSystem.rmdir" title="adlfs.AzureBlobFileSystem.rmdir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rmdir</span></code></a>(path[, delimiter])</p></td>
 <td><p>Remove a directory, if empty</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sign</span></code>(path[, expiration])</p></td>
-<td><p>Create a signed URL representing the given path</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#adlfs.AzureBlobFileSystem.sign" title="adlfs.AzureBlobFileSystem.sign"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sign</span></code></a>(path[, expiration])</p></td>
+<td><p>Create a signed URL representing the given path.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#adlfs.AzureBlobFileSystem.size" title="adlfs.AzureBlobFileSystem.size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code></a>(path)</p></td>
 <td><p>Size in bytes of file</p></td>
@@ -679,7 +679,7 @@ This aligns to the Azure Blob Filesystem flat hierarchy</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="adlfs.AzureBlobFileSystem.put_file">
-<span class="sig-name descname"><span class="pre">put_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_concurrency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargws</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.put_file" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">put_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_concurrency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.put_file" title="Link to this definition">#</a></dt>
 <dd><p>Copy single file to remote</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -687,7 +687,8 @@ This aligns to the Azure Blob Filesystem flat hierarchy</p>
 <li><p><strong>lpath</strong> – Path to local file</p></li>
 <li><p><strong>rpath</strong> – Path to remote file</p></li>
 <li><p><strong>delimitier</strong> – Filepath delimiter</p></li>
-<li><p><strong>overwrite</strong> – Boolean (False).  If True, overwrite the existing file present</p></li>
+<li><p><strong>overwrite</strong> – Boolean (True). Whether to overwrite any existing file
+(True) or raise if one already exists (False).</p></li>
 </ul>
 </dd>
 </dl>
@@ -695,7 +696,7 @@ This aligns to the Azure Blob Filesystem flat hierarchy</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="adlfs.AzureBlobFileSystem.rm">
-<span class="sig-name descname"><span class="pre">rm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdepth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.rm" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxdepth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.rm" title="Link to this definition">#</a></dt>
 <dd><p>Delete files.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -726,6 +727,12 @@ efficient when you don’t need the operation.</p>
 <dt class="sig sig-object py" id="adlfs.AzureBlobFileSystem.rmdir">
 <span class="sig-name descname"><span class="pre">rmdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.rmdir" title="Link to this definition">#</a></dt>
 <dd><p>Remove a directory, if empty</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="adlfs.AzureBlobFileSystem.sign">
+<span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expiration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adlfs.AzureBlobFileSystem.sign" title="Link to this definition">#</a></dt>
+<dd><p>Create a signed URL representing the given path.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -952,6 +959,7 @@ Tries credentials first, then connection string and finally account key</p>
 <li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.put_file"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.put_file()</span></code></a></li>
 <li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.rm"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.rm()</span></code></a></li>
 <li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.rmdir"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.rmdir()</span></code></a></li>
+<li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.sign"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.sign()</span></code></a></li>
 <li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.size"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.size()</span></code></a></li>
 <li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.split_path"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.split_path()</span></code></a></li>
 <li><a class="reference internal" href="#adlfs.AzureBlobFileSystem.upload"><code class="docutils literal notranslate"><span class="pre">AzureBlobFileSystem.upload()</span></code></a></li>
